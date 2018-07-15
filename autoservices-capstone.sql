@@ -34,7 +34,7 @@ CREATE TABLE `automobile` (
   `Transmission` char(2) NOT NULL,
   `Year` year(4) NOT NULL,
   `Color` varchar(50) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,7 +46,7 @@ CREATE TABLE `automobile` (
 CREATE TABLE `automobile_make` (
   `MakeID` int(10) NOT NULL,
   `Make` varchar(255) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `automobile_model` (
   `ModelID` int(10) NOT NULL,
   `MakeID` int(10) NOT NULL,
   `Model` varchar(255) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -79,7 +79,7 @@ CREATE TABLE `customer` (
   `City` varchar(40) NOT NULL,
   `Province` varchar(40) NOT NULL,
   `EmailAddress` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -93,7 +93,7 @@ CREATE TABLE `discount` (
   `DiscountName` varchar(255) NOT NULL,
   `DiscountRate` smallint(3) NOT NULL,
   `DiscountType` varchar(40) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,7 +107,7 @@ CREATE TABLE `estimate` (
   `CustomerID` int(10) NOT NULL,
   `PlateNo` varchar(10) NOT NULL,
   `InspectionID` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,7 +121,7 @@ CREATE TABLE `inspection` (
   `InspectionChecklistID` int(10) NOT NULL,
   `Assessment` varchar(100) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,7 +134,7 @@ CREATE TABLE `inspection_checklist` (
   `InspectionChecklistID` int(10) NOT NULL,
   `InspectionItem` varchar(100) NOT NULL,
   `InspectionType` varchar(100) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -147,7 +147,7 @@ CREATE TABLE `inspection_header` (
   `InspectionID` int(10) NOT NULL,
   `JobOrderID` int(10) NOT NULL,
   `Date` date NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -159,7 +159,7 @@ CREATE TABLE `inspection_header` (
 CREATE TABLE `job_description` (
   `JobDescriptionID` int(10) NOT NULL,
   `JobDescription` varchar(50) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,7 +185,7 @@ CREATE TABLE `job_order` (
   `LaborDiscount_Rate` smallint(3) DEFAULT NULL,
   `JobDuration` smallint(3) DEFAULT NULL,
   `TotalAmountDue` decimal(14,4) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -202,7 +202,7 @@ CREATE TABLE `job_schedule` (
   `Status` varchar(10) NOT NULL,
   `StartDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `FinishDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -219,7 +219,7 @@ CREATE TABLE `maintenance` (
   `MaterialRequired` tinyint(1) NOT NULL,
   `CarriedOut` tinyint(1) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -232,7 +232,7 @@ CREATE TABLE `maintenance_checklist` (
   `MaintenanceChecklistID` int(10) NOT NULL,
   `MaintenanceCheckCategory` varchar(100) NOT NULL,
   `MaintenanceCheckItem` varchar(100) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -245,7 +245,7 @@ CREATE TABLE `maintenance_header` (
   `MaintenanceID` int(10) NOT NULL,
   `JobOrderID` int(10) NOT NULL,
   `Mileage` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -260,7 +260,7 @@ CREATE TABLE `package_backjob` (
   `DateTime` datetime NOT NULL,
   `Cost` decimal(14,4) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -273,7 +273,7 @@ CREATE TABLE `package_header` (
   `PackageID` int(10) NOT NULL,
   `PackageName` varchar(255) NOT NULL,
   `Price` decimal(14,4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -286,7 +286,7 @@ CREATE TABLE `package_product_inclusions` (
   `PackageID` int(10) NOT NULL,
   `ProductID` int(10) NOT NULL,
   `Quantity` int(3) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -298,7 +298,7 @@ CREATE TABLE `package_product_inclusions` (
 CREATE TABLE `package_service_inclusions` (
   `PackageID` int(10) NOT NULL,
   `ServiceID` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -312,7 +312,7 @@ CREATE TABLE `package_warranty` (
   `PackageID` int(10) NOT NULL,
   `Duration` int(3) NOT NULL,
   `DurationMode` varchar(5) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -327,7 +327,7 @@ CREATE TABLE `payment` (
   `TotalCharge` decimal(14,4) NOT NULL,
   `TotalPayment` decimal(14,4) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -347,7 +347,7 @@ CREATE TABLE `personnel_header` (
   `Barangay` varchar(40) NULL,
   `City` varchar(40) NOT NULL,
   `Province` varchar(40) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -360,7 +360,7 @@ CREATE TABLE `personnel_job` (
   `PersonnelJobID` int(10) NOT NULL,
   `PersonnelID` int(10) NOT NULL,
   `JobDescriptionID` int(40) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -373,7 +373,7 @@ CREATE TABLE `personnel_job_performed` (
   `PersonnelPerformedID` int(10) NOT NULL,
   `JobOrderID` int(10) NOT NULL,
   `PersonnelJobID` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -386,7 +386,7 @@ CREATE TABLE `personnel_skill` (
   `SkillID` int(10) NOT NULL,
   `PersonnelID` int(10) NOT NULL,
   `isMastered` tinyint(1) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -401,7 +401,7 @@ CREATE TABLE `personnel_workload` (
   `WorkStartDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `InitialWorkload` int(3) NOT NULL DEFAULT '0',
   `ActualWorkload` int(3) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -415,7 +415,7 @@ CREATE TABLE `problem` (
   `JobOrderID` int(10) NOT NULL,
   `Problem` varchar(8000) NOT NULL,
   `isPerformed` tinyint(1) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -429,7 +429,7 @@ CREATE TABLE `process` (
   `ServiceID` int(10) NOT NULL,
   `ProcessName` varchar(100) NOT NULL,
   `EstimatedTime` int(4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -447,7 +447,7 @@ CREATE TABLE `product` (
   `Application` varchar(100) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
   `Price` decimal(14,4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -463,7 +463,7 @@ CREATE TABLE `product_backjob` (
   `Date` date NOT NULL,
   `Cost` decimal(14,4) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -475,7 +475,7 @@ CREATE TABLE `product_backjob` (
 CREATE TABLE `product_brand` (
   `ProductBrandID` int(10) NOT NULL,
   `BrandName` varchar(50) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -487,7 +487,7 @@ CREATE TABLE `product_brand` (
 CREATE TABLE `product_category` (
   `ProductCategoryID` int(10) NOT NULL,
   `CategoryName` varchar(50) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -503,7 +503,7 @@ CREATE TABLE `product_damaged` (
   `Quantity` smallint(4) NOT NULL,
   `Date` date NOT NULL,
   `Remarks` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -516,7 +516,7 @@ CREATE TABLE `product_type` (
   `ProductTypeID` int(10) NOT NULL,
   `ProductCategoryID` int(10) NOT NULL,
   `ProductTypeName` varchar(50) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -531,7 +531,7 @@ CREATE TABLE `product_unit_type` (
   `UnitCategory` tinyint(5) NOT NULL,
   `Unit` char(3) NOT NULL,
   `Size` int(4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -545,7 +545,7 @@ CREATE TABLE `product_used` (
   `SalesID` int(10) NOT NULL,
   `DateUsed` date NOT NULL,
   `SubTotal` decimal(14,4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -560,7 +560,7 @@ CREATE TABLE `product_warranty` (
   `SalesID` int(10) NOT NULL,
   `Duration` int(3) NOT NULL,
   `DurationMode` varchar(5) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -575,7 +575,7 @@ CREATE TABLE `promo_backjob` (
   `DateTime` datetime NOT NULL,
   `Cost` decimal(14,4) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -590,7 +590,7 @@ CREATE TABLE `promo_header` (
   `Duration` int(3) NOT NULL,
   `DurationMode` varchar(5) NOT NULL,
   `Price` decimal(14,4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -603,7 +603,7 @@ CREATE TABLE `promo_product_inclusions` (
   `PromoID` int(10) NOT NULL,
   `ProductID` int(10) NOT NULL,
   `Quantity` int(3) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -615,7 +615,7 @@ CREATE TABLE `promo_product_inclusions` (
 CREATE TABLE `promo_service_inclusions` (
   `PromoID` int(10) NOT NULL,
   `ServiceID` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -629,7 +629,7 @@ CREATE TABLE `promo_warranty` (
   `PromoID` int(10) NOT NULL,
   `Duration` int(3) NOT NULL,
   `DurationMode` varchar(5) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -644,7 +644,7 @@ CREATE TABLE `sales` (
   `MarkupPrice` decimal(14,4) NOT NULL,
   `Quantity` smallint(4) NOT NULL,
   `Date` date NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -661,7 +661,7 @@ CREATE TABLE `service` (
   `Class` varchar(50) DEFAULT NULL,
   `EstimatedTime` int(3) NOT NULL,
   `InitialPrice` decimal(14,4) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -677,7 +677,7 @@ CREATE TABLE `service_backjob` (
   `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Cost` decimal(14,4) NOT NULL,
   `Note` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -690,7 +690,7 @@ CREATE TABLE `service_bay` (
   `ServiceBayID` int(10) NOT NULL,
   `ServiceBayName` varchar(50) NOT NULL,
   `Description` varchar(255) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -703,7 +703,7 @@ CREATE TABLE `service_category` (
   `ServiceCategoryID` int(10) NOT NULL,
   `ServiceCategoryName` varchar(100) NOT NULL,
   `Description` varchar(255) DEFAULT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -717,7 +717,7 @@ CREATE TABLE `service_performed` (
   `ServiceID` int(10) NOT NULL,
   `JobOrderID` int(10) NOT NULL,
   `ServiceWarrantyID` int(10) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -731,7 +731,7 @@ CREATE TABLE `service_warranty` (
   `JobOrderID` int(10) NOT NULL,
   `Duration` int(3) NOT NULL,
   `DurationMode` varchar(5) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -743,7 +743,7 @@ CREATE TABLE `service_warranty` (
 CREATE TABLE `skill_header` (
   `SkillID` int(10) NOT NULL,
   `Skill` varchar(50) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -761,7 +761,7 @@ CREATE TABLE `user` (
   `Username` varchar(20) DEFAULT NULL,
   `Password` varchar(50) NOT NULL,
   `EmailAddress` varchar(255) NOT NULL,
-  `isActive` BIT NOT NULL DEFAULT '1',
+  `isActive` BIT NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
