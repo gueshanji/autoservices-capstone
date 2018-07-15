@@ -1,19 +1,21 @@
-<?php
+<?php 
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
-{
+class Service extends Model {
+
+    public $timestamps = false;
     protected $table = 'service';
+    protected $primaryKey = 'serviceid';
     protected $fillable = [
-    	'ServiceCategoryID',
-        'ServiceName',
-        'SizeType',
-        'Class',
-        'EstimatedTime',
-        'InitialPrice'  	
+    	'servicecategoryid',
+        'servicename',
+        'sizetype',
+        'class',
+        'estimatedtime',
+        'initialprice'  	
     ];
 
     public function servicecategory()

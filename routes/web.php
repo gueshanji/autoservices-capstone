@@ -43,12 +43,7 @@ Route::post('/productunittype', 'ProductUnitTypeController@delete');
 Route::get('/customer','CustomerController@customer');
 Route::get('/estimates', 'EstimatesController@estimates');
 Route::get('/warranty', 'WarrantyController@warranty');
-
-//JobDescription
 Route::get('/jobdescription', 'JobDescriptionController@jobdescription');
-Route::get('/jobdescription', 'JobDescriptionController@index');
-Route::post('/jobdescription', 'JobDescriptionController@store')->name('store');
-
 Route::get('/viewcustomer', 'ViewCustomerController@viewcustomer');
 Route::get('/addpersonnel', 'AddPersonnelController@addpersonnel');
 Route::get('/discount','DiscountController@discount');
@@ -62,11 +57,22 @@ Route::get('/editpackage','EditPackageController@editpackage');
 
 //MaintenanceServices
 Route::resource('servicecategory','ServiceCategoryController');
-Route::post('/servicecategory', 'ServiceCategoryController@store')->name('store');
-Route::put('/servicecategory', 'ServiceCategoryController@update')->name('update');
+Route::post('/servicecategory', 'ServiceCategoryController@store');
+Route::put('/servicecategory', 'ServiceCategoryController@update');
+Route::patch('/servicecategory', 'ServiceCategoryController@delete');
 
-Route::get('/service','ServiceController@service');
-Route::get('/servicebay','ServiceController@servicebay');
+Route::resource('servicebay','ServiceBayController');
+Route::post('/servicebay', 'ServiceBayController@store');
+Route::put('/servicebay', 'ServiceBayController@update');
+Route::patch('/servicebay', 'ServiceBayController@delete');
+
+Route::resource('transact','TransactionController');
+
+Route::resource('/service','ServiceController');
+Route::post('/service', 'ServiceController@store');
+Route::put('/service', 'ServiceController@update');
+Route::patch('/service', 'ServiceController@delete');
+
 Route::get('/inspectionchecklist','ServiceController@inspectionchecklist');
 Route::get('/maintenancechecklist','ServiceController@maintenancechecklist');
 

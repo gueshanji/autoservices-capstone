@@ -67,7 +67,7 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($categories as $category)
+                                                @foreach ($categories as $category) <!-- -->
                                                 <tr>
                                                     <td>{!!$category->ServiceCategoryName!!}</td>
                                                     <td>{!!$category->Description!!}</td>
@@ -79,7 +79,7 @@
                                                         <!-- {{ Form::open(array('url' => 'servicecategory/' . $category->ServiceCategoryID, 'action' => 'ServiceCategoryController@destroy', 'method' => 'DELETE')) }}
                                                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                                                         {{ Form::close() }} -->
-                                                        <button class="btn btn-danger source warning confirm hvr-float-shadow" style = "width: 70px "><i class="fa fa-trash text-white"></i> &nbsp; Delete
+                                                        <button class="btn btn-danger source warning confirm hvr-float-shadow" onclick="deleteModal({!!$category->ServiceCategoryID!!})" type="button" style="width:70px"><i class="fa fa-trash text-white"></i> &nbsp; Delete
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -108,7 +108,7 @@
                                         <h4>Service Category Name</h4>
                                         <p>
                                             {!! 
-                                                Form::input ('servicecategoryname','text', null, [
+                                                Form::input ('servicecategoryname','text', Input::old('servicecategoryname'), [
                                                 'id'=>'servicecategoryname',
                                                 'name'=>'servicecategoryname',
                                                 'type'=>'text',
@@ -127,7 +127,7 @@
                                                     <td><h5>Description</h5></td>
                                                     <td>
                                                         {!! 
-                                                            Form::input ('description','text', null, [
+                                                            Form::input ('description','text', Input::old('description'), [
                                                             'id'=>'description',
                                                             'name'=>'description',
                                                             'type'=>'text',
@@ -144,10 +144,10 @@
                                     </div>
                                     <br>
                                     <div id="show-errors">
-                                        @if ($errors->any())
+                                        @if ($errors->update->any())
                                             <div class="alert alert-danger">
                                                 <ul>
-                                                    @foreach ($errors->all() as $error)
+                                                    @foreach ($errors->update->all() as $error)
                                                         <li>{{ $error }}</li>
                                                     @endforeach
                                                 </ul>
@@ -216,7 +216,7 @@
                                                     <td><h5>Description</h5></td>
                                                     <td>
                                                         {!! 
-                                                            Form::input ('description','text', null, [
+                                                            Form::input ('description','text', Input::old('description'), [
                                                             'id'=>'description',
                                                             'name'=>'description',
                                                             'type'=>'text',
@@ -232,10 +232,10 @@
                                     </div>
                                     <br>
                                     <div id="show-errors">
-                                        @if ($errors->any())
+                                        @if ($errors->add->any())
                                             <div class="alert alert-danger">
                                                 <ul>
-                                                    @foreach ($errors->all() as $error)
+                                                    @foreach ($errors->add->all() as $error)
                                                         <li>{{ $error }}</li>
                                                     @endforeach
                                                 </ul>
@@ -266,6 +266,58 @@
                 {!! Form::close() !!}
                 <!-- END ADD MODAL -->
 
+                <!-- START DELETE MODAL -->
+                {!! Form::open(array('id' => 'deleteForm', 'method' => 'PATCH', 'url' => 'servicecategory', 'action' => 'ServiceCategoryController@delete')) !!}
+                <!-- {!! csrf_field() !!} -->
+                <div class="modal fade in " id="deleteModal" tabindex="-3" role="dialog" aria-hidden="false">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title text-white"><i class="fa fa-pencil"></i>
+                                            &nbsp;&nbsp;Delete this record?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col">
+                                    <div class="col-xl-12" style="padding-right:25px;">
+                                        <br>
+                                        <p>
+                                            Are you sure you want to delete this record?
+                                        </p>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <table id="myTable" class="table order-list" >
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input id="deleteId" name="deleteId" type="hidden" value=null>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal-footer">
+                                <div class="examples transitions m-t-5">
+                                    <button type="button" data-dismiss="modal" class="btn btn-secondary hvr-float-shadow adv_cust_mod_btn">Cancel</button>
+                                </div>
+                                <div class="examples transitions m-t-5">
+                                    {!! Form::button('<i class="fa fa-save text-white"></i>&nbsp;OK', [
+                                        'type'=>'submit',
+                                        'class'=>'btn btn-success warning source confirm m-l-10 adv_cust_mod_btn',
+                                        'data-dismiss'=>'modal',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+                <!-- END DELETE MODAL -->
                 <!-- END MODAL-->
 
                             </div>
@@ -278,6 +330,7 @@
 
 
 <!-- scripts-->
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="vendors/datatables/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/components.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
@@ -287,6 +340,16 @@
 <script type="text/javascript" src="vendors/wow/js/wow.min.js"></script>
 <script>
     new WOW().init();
+</script>
+<script>
+    $(window).on('load',function(){
+        @if($errors->add->any())
+            $('#addModal').modal('show');
+        @endif
+        @if($errors->update->any())
+            $('#editModal').modal('show');
+         @endif
+    });
 </script>
 <script>
      function editModal(id){
@@ -302,8 +365,13 @@
             });
             $('#editModal').modal('show');
         }
+        function deleteModal(id){
+            document.getElementById("deleteId").value = id;
+            $('#deleteModal').modal('show');
+        }
 </script>
 
+<!-- global scripts modals-->
 <script type="text/javascript" src="js/pages/modals.js"></script>
 <!--End of global scripts-->
 @stop

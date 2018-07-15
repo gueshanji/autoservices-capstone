@@ -1,14 +1,14 @@
-<?php
+<?php 
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceBay extends Model
-{
+class ServiceBay extends Model {
+
+    public $timestamps = false;
     protected $table = 'service_bay';
-    protected $fillable = [
-    	'ServiceBayName',
-    	'Description'
-    ];
+    protected $primaryKey = 'servicebayid';
+    protected $fillable = ['servicebayid','servicebayname','description'];
+    
 }
